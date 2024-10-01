@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Who We Are - Agrivoltaics Projects</title>
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Leaflet CSS without integrity and crossorigin attributes -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  
+</head>
+<body class="who-we-are">
+
+  <!-- Header Navigation Bar -->
+  <header>
+    <div class="logo-container">
+      <a href="index.html" class="logo-link">
+        <img src="images/ISA_icon.png" alt="ISA Icon">
+        <span class="header-text">International School of Agrivoltaics (ISAv)</span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a href="who_we_are.html">Who We Are</a>
+        </li>
+        <li>
+          <a href="#">Our Approach</a>
+          <ul>
+            <li><a href="sustainability.html">Sustainability</a></li>
+            <li><a href="research.html">Research</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Our Programs</a>
+          <ul>
+            <li><a href="agrivoltaics_training.html">Agrivoltaics Training</a></li>
+            <li><a href="workshops.html">Workshops</a></li>
+          </ul>
+        </li>
+        <li><a href="news_insights.html">News & Insights</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  
+  
+  
+  
+
+  <!-- Leaflet Map Section -->
+  <div id="map"></div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 Agrivoltaics Projects</p>
+  </footer>
+
+  <!-- Leaflet JS without integrity and crossorigin attributes -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  ></script>
+
+  <!-- Initialize Leaflet Map -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize the map centered on the first facility
+      const map = L.map('map').setView([32.578374, -110.85119], 5); // University of Arizona Biosphere 2 coordinates
+
+      // Add Esri World Imagery as the basemap
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 19,
+        attribution: '© ESRI'
+      }).addTo(map);
+
+      // Custom Icon using L.divIcon with a fully filled white circular background
+      const isaIcon = L.divIcon({
+        html: `
+          <div style="
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 3px rgba(0,0,0,0.3); /* Optional: adds a subtle shadow */
+            overflow: hidden; /* Ensures the image doesn't spill out of the circle */
+          ">
+            <img src="images/ISA_icon.png" style="
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              object-fit: cover; /* Ensures the image covers the entire container without distortion */
+            " />
+          </div>
+        `,
+        className: '', // Remove default Leaflet classes to prevent style conflicts
+        iconSize: [30, 30], // Matches the container size
+        iconAnchor: [15, 30], // Centers the icon bottom
+        popupAnchor: [0, -30] // Positions the popup directly above the icon
+      });
+
+      // Marker Data with real coordinates and succinct descriptions
+      const markers = [
+        {
+          coords: [32.578374, -110.85119],
+          title: "University of Arizona Biosphere 2",
+          description: "<h3>University of Arizona Biosphere 2</h3><p>At Biosphere 2, researchers established the first agrivoltaics site using solar panels and crops like chiltepin peppers and cherry tomatoes. Over a three-month season, they monitored climate and soil conditions, finding that shaded crops experienced cooler days, warmer nights, higher moisture, and significantly increased yields—tripling chiltepin peppers and doubling tomato production under solar panels.</p>"
+        },
+        {
+          coords: [29.96791, 35.06016],
+          title: "Arava Institute",
+          description: "<h3>Arava Institute</h3><p>The Arava Institute is pioneering sustainable development in arid regions by implementing agrivoltaics systems that combine agriculture with solar energy. These systems enable crops like tomatoes, lettuce, spinach, and kale to grow while generating electricity for irrigation and potentially powering homes, thereby enhancing food and water security in remote and drought-prone areas.</p>"
+        },
+        {
+          coords: [19.20951989202182, -99.15358064731502],
+          title: "UNAM Topilejo",
+          description: "<h3>UNAM Topilejo</h3><p>UNAM Topilejo spearheads Mexico's first agrivoltaic pilot project, aiming to reduce water usage by up to 80% by integrating solar energy with farming over a 350m² area. The project includes 72 solar panels, a rainwater collection system, and solar dehydrators, studying crop performance under photovoltaic covers and providing training in photovoltaic and solar drying technologies.</p>"
+        },
+        {
+          coords: [32.217937, -7.886668],
+          title: "UM6P Benguerir",
+          description: "<h3>UM6P Benguerir</h3><p>UM6P Benguerir is developing an agrivoltaics platform in Benguerir, Morocco, to study the co-production of energy and crops in semi-arid conditions. The chess-board structured system monitors climate, soil, and crop variables to evaluate productivity and economic feasibility, collaborating with partners to standardize agrivoltaics evaluation protocols for scalable sustainable agriculture initiatives.</p>"
+        }
+        // Add more markers as needed
+      ];
+
+      // Add markers to the map with popups and permanent tooltips
+      markers.forEach(marker => {
+        const leafletMarker = L.marker(marker.coords, { icon: isaIcon }).addTo(map);
+        leafletMarker.bindPopup(marker.description);
+        leafletMarker.bindTooltip(marker.title, {
+          permanent: true,
+          direction: 'top',
+          className: 'facility-tooltip',
+          offset: [0, -30] // Shift tooltip upwards above the icon
+        });
+      });
+
+      // Adjust map view to fit all markers
+      if (markers.length > 0) {
+        const group = new L.featureGroup(markers.map(marker => L.marker(marker.coords)));
+        map.fitBounds(group.getBounds().pad(0.5));
+      }
+    });
+  </script>
+
+</body>
+</html>
