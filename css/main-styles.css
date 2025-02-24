@@ -28,12 +28,23 @@
   font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, sans-serif;
 }
 
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--light);
   color: var(--text);
   line-height: 1.7;
   overflow-x: hidden;
-  font-size: 16px; /* Base font size */
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation; /* Improves touch behavior on mobile */
 }
 
 /* Enhanced Header styles */
@@ -50,6 +61,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 70px; /* Fixed height helps with mobile calculations */
 }
 
 .logo-container {
@@ -197,6 +209,7 @@ nav ul ul a:hover {
   cursor: pointer;
   padding: 0.5rem;
   transition: var(--transition);
+  z-index: 1020; /* Ensure it's above the nav menu */
 }
 
 .menu-toggle:hover {
@@ -208,6 +221,8 @@ main {
   padding: 120px 20px 80px;
   max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -457,267 +472,6 @@ footer::before {
   }
 }
 
-/* Polished Responsive styles */
-@media (max-width: 992px) {
-  .timeline::before {
-    left: 30px;
-  }
-
-  .timeline-item {
-    padding-left: 70px;
-    padding-right: 20px;
-  }
-
-  .timeline-dot {
-    left: 30px;
-  }
-
-  .timeline-year {
-    left: 30px;
-    transform: translateX(-50%);
-  }
-
-  .timeline-content {
-    width: 100%;
-    left: 0 !important;
-  }
-
-  .timeline-item:nth-child(odd) .timeline-content::before,
-  .timeline-item:nth-child(even) .timeline-content::before {
-    left: -9px;
-    right: auto;
-  }
-
-  /* Adjust video blurb width for tablets */
-  .video-blurb {
-    width: calc(50% - 20px); /* Two blurbs side by side */
-  }
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  nav > ul {
-    position: fixed;
-    top: 70px;
-    right: -300px;
-    width: 280px;
-    height: calc(100vh - 70px);
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    flex-direction: column;
-    padding: 1.5rem 1rem;
-    transition: right 0.3s ease-out;
-    overflow-y: auto;
-    gap: 0.5rem;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    border-top-left-radius: 10px;
-    z-index: 1010;
-  }
-
-  nav.active > ul {
-    right: 0;
-  }
-
-  nav ul ul {
-    position: static;
-    display: none;
-    width: 100%;
-    box-shadow: none;
-    padding: 0.5rem 0 0.5rem 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 6px;
-    border-left: 2px solid var(--secondary);
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-  }
-
-  nav ul ul::before {
-    display: none;
-  }
-
-  nav li {
-    width: 100%;
-    margin-bottom: 0.3rem;
-  }
-
-  nav ul ul a {
-    color: rgba(255, 255, 255, 0.9);
-    padding: 0.6rem 1rem;
-    border-left: none;
-  }
-
-  nav ul ul a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border-left: none;
-  }
-
-  nav a::after {
-    bottom: 0;
-    height: 1px;
-  }
-
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  .header-text {
-    font-size: 1rem;
-  }
-
-  main {
-    padding-top: 100px; /* Adjust main padding for mobile header */
-    padding-bottom: 60px; /* Adjust main padding for mobile footer or content spacing */
-  }
-
-  /* Center align timeline year on smaller screens for better readability */
-  .timeline-year {
-    transform: translateX(-50%); /* Ensure year stays centered on mobile */
-  }
-
-  /* Stack video blurbs on smaller screens */
-  .video-blurb {
-    width: 100%;
-    max-width: 450px; /* Limit max width for stacked blurbs if needed */
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px; /* Add spacing between stacked blurbs */
-  }
-
-  #controls-container {
-    bottom: 15px;
-    right: 15px;
-  }
-
-  .overlay-buttons {
-    bottom: 30px;
-  }
-}
-
-@media (max-width: 576px) { /* Extra small devices (phones, less than 576px) */
-    body {
-        font-size: 15px; /* Further reduce base font size for very small screens */
-    }
-
-    h1 {
-        font-size: 2rem; /* Further reduce h1 size for very small screens */
-        margin-bottom: 2rem;
-    }
-
-    .header-text {
-        font-size: 0.9rem;
-        display: none; /* Optionally hide header text on very small screens */
-    }
-
-    .logo-link img {
-        height: 35px; /* Slightly smaller logo for very small screens */
-    }
-
-    header {
-        padding: 0.8rem 1.5rem; /* Reduce header padding on very small screens */
-    }
-
-    nav a {
-        font-size: 1rem; /* Adjust nav link font size for very small screens */
-        padding: 0.5rem;
-    }
-
-    main {
-        padding-top: 90px; /* Further adjust main padding if header is smaller */
-        padding-bottom: 40px; /* Adjust bottom padding for very small screens */
-        padding-left: 15px; /* Reduce side padding for very small screens */
-        padding-right: 15px;
-    }
-
-    .timeline::before {
-        left: 20px; /* Adjust timeline line position for smaller screens */
-    }
-
-    .timeline-item {
-        padding-left: 50px; /* Adjust timeline item padding for smaller screens */
-        padding-right: 10px; /* Reduce right padding for timeline items */
-    }
-
-    .timeline-dot {
-        left: 20px; /* Adjust timeline dot position for smaller screens */
-        width: 18px; /* Smaller timeline dot */
-        height: 18px;
-        top: 2rem; /* Adjust dot top position if needed */
-    }
-
-    .timeline-year {
-        left: 20px; /* Adjust timeline year position for smaller screens */
-        font-size: 0.75rem; /* Smaller year font size */
-        top: 1.8rem; /* Adjust year top position if needed */
-        padding: 0.2rem 0.7rem; /* Reduce year padding */
-    }
-
-    .timeline-content {
-        padding: 1.2rem; /* Reduce content padding for smaller screens */
-    }
-
-    .timeline-content h3 {
-        font-size: 1.3rem; /* Slightly smaller content heading */
-        margin-bottom: 1rem;
-    }
-
-    .timeline-content p {
-        font-size: 0.9rem; /* Slightly smaller content paragraph text */
-        margin-bottom: 1rem;
-    }
-
-    .timeline-icon {
-        font-size: 1.3rem; /* Slightly smaller timeline icon */
-        top: 1rem; /* Adjust icon top position if needed */
-        right: 1rem; /* Adjust icon right position if needed */
-    }
-
-    footer {
-        padding: 1.5rem; /* Reduce footer padding on very small screens */
-    }
-
-    #controls-container {
-        bottom: 10px;
-        right: 10px;
-        gap: 5px; /* Reduce gap between controls */
-    }
-
-    #controls-container button {
-        padding: 0.6rem;
-        font-size: 0.9rem;
-        width: 35px;
-        height: 35px;
-    }
-
-    .overlay-buttons {
-        bottom: 20px;
-    }
-}
-
-@media (max-width: 480px) { /* Even smaller devices (phones) - further adjustments if needed */
-  .timeline::before {
-    left: 15px; /* Further adjust timeline line position for very small screens */
-  }
-
-  .timeline-item {
-    padding-left: 40px; /* Further adjust timeline item padding for very small screens */
-  }
-
-  .timeline-dot {
-    left: 15px; /* Further adjust timeline dot position for very small screens */
-  }
-
-  .timeline-year {
-    left: 15px; /* Further adjust timeline year position for very small screens */
-  }
-}
-
-
 /* Video Background Styles for index.html - Enhanced */
 .video-background {
   position: relative;
@@ -880,24 +634,6 @@ footer::before {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Global styling fixes */
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-
-main {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 120px 20px;
-  box-sizing: border-box;
-}
-
 /* Additional custom styling for links */
 a {
   transition: var(--transition);
@@ -922,26 +658,395 @@ a {
   background-color: var(--primary);
 }
 
-/* Responsive video blurbs */
-@media (max-width: 992px) {
+/* Enhanced Mobile Navigation */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1005;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+nav.active .mobile-nav-overlay {
+  display: block;
+  opacity: 1;
+}
+
+/* JavaScript-added class for submenus */
+.submenu-toggle {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 5;
+}
+
+.dropdown-active > ul {
+  display: block !important;
+}
+
+/* ========== IMPROVED RESPONSIVE STYLES ========== */
+
+/* Large devices (laptops and desktops) */
+@media (max-width: 1200px) {
   .video-blurb {
-    width: calc(50% - 20px);
+    width: calc(33.333% - 20px);
+  }
+  
+  .timeline-content {
+    padding: 1.5rem;
   }
 }
 
+/* Medium devices (tablets) */
+@media (max-width: 992px) {
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-item {
+    padding-left: 70px;
+    padding-right: 20px;
+  }
+
+  .timeline-dot {
+    left: 30px;
+  }
+
+  .timeline-year {
+    left: 30px;
+    transform: translateX(-50%);
+  }
+
+  .timeline-content {
+    width: 100%;
+    left: 0 !important;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-content::before,
+  .timeline-item:nth-child(even) .timeline-content::before {
+    left: -9px;
+    right: auto;
+  }
+  
+  .video-blurb {
+    width: calc(50% - 20px);
+  }
+  
+  #map {
+    height: 450px;
+  }
+  
+  h1 {
+    font-size: 2.4rem;
+  }
+}
+
+/* Small devices (landscape phones and small tablets) */
 @media (max-width: 768px) {
+  html {
+    font-size: 15px; /* Slightly reduce base font size */
+  }
+  
+  header {
+    padding: 0.8rem 1.2rem;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+
+  nav > ul {
+    position: fixed;
+    top: 70px;
+    right: -300px;
+    width: 280px;
+    height: calc(100vh - 70px);
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    transition: right 0.3s ease-out;
+    overflow-y: auto;
+    gap: 0.5rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 10px;
+    z-index: 1010;
+  }
+
+  nav.active > ul {
+    right: 0;
+  }
+  
+  /* Show submenu toggle buttons on mobile */
+  .submenu-toggle {
+    display: block;
+  }
+
+  nav ul ul {
+    position: static;
+    display: none;
+    width: 100%;
+    box-shadow: none;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    border-left: 2px solid var(--secondary);
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  nav ul ul::before {
+    display: none;
+  }
+
+  nav li {
+    width: 100%;
+    margin-bottom: 0.3rem;
+  }
+  
+  /* Make the parent link and submenu toggle separate */
+  nav li.has-submenu > a {
+    padding-right: 40px; /* Make room for the toggle button */
+  }
+
+  nav ul ul a {
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.6rem 1rem;
+    border-left: none;
+  }
+
+  nav ul ul a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-left: none;
+  }
+
+  nav a::after {
+    bottom: 0;
+    height: 1px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  h1::after {
+    width: 60px;
+    height: 3px;
+  }
+
+  .header-text {
+    font-size: 1rem;
+  }
+  
   .video-blurb {
     width: 100%;
     max-width: 450px;
     margin: 0 auto;
   }
+  
+  #controls-container {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .overlay-buttons {
+    bottom: 30px;
+  }
+  
+  main {
+    padding: 100px 16px 60px;
+  }
+  
+  .timeline-content h3 {
+    font-size: 1.4rem;
+  }
+  
+  #map {
+    height: 400px;
+  }
+}
 
+/* Extra small devices (portrait phones) */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px; /* Further reduce base font size */
+  }
+  
+  header {
+    padding: 0.6rem 1rem;
+    height: 60px;
+  }
+  
+  nav > ul {
+    top: 60px;
+    height: calc(100vh - 60px);
+    width: 260px;
+  }
+  
+  .logo-link img {
+    height: 30px;
+    margin-right: 8px;
+  }
+  
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    padding-left: 50px;
+    padding-right: 10px;
+  }
+
+  .timeline-dot {
+    left: 20px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .timeline-year {
+    left: 20px;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.8rem;
+  }
+
+  .timeline-content {
+    padding: 1.2rem;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+  }
+  
+  .timeline-content h3::after {
+    width: 40px;
+    height: 2px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 0.8rem;
+  }
+  
+  h1::after {
+    width: 50px;
+  }
+
+  .header-text {
+    display: none;
+  }
+  
   #controls-container {
     bottom: 15px;
     right: 15px;
   }
-
+  
+  #controls-container button {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+  
   .overlay-buttons {
-    bottom: 30px;
+    bottom: 20px;
+    width: 95%;
+  }
+  
+  .video-blurb {
+    padding: 15px;
+  }
+  
+  .video-btn {
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  #map {
+    height: 350px;
+  }
+  
+  main {
+    padding: 80px 12px 50px;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 360px) {
+  .logo-link img {
+    height: 24px;
+  }
+  
+  .menu-toggle {
+    font-size: 1.3rem;
+  }
+  
+  h1 {
+    font-size: 1.7rem;
+  }
+  
+  .timeline-content {
+    padding: 1rem;
+  }
+  
+  nav > ul {
+    width: 240px;
+  }
+  
+  #map {
+    height: 300px;
+  }
+}
+
+/* Touch-specific optimizations */
+@media (hover: none) {
+  /* Remove hover effects that might cause issues on touch devices */
+  .timeline-item:hover .timeline-dot {
+    transform: translateX(-50%);
+    background-color: var(--secondary);
+    box-shadow: 0 0 0 4px rgba(171, 5, 32, 0.2), 0 0 15px rgba(171, 5, 32, 0.3);
+  }
+  
+  .timeline-item:hover .timeline-year {
+    opacity: 1; /* Always show on touch */
+    top: 1.2rem;
+  }
+  
+  .timeline-item:hover .timeline-content {
+    transform: translateY(0);
+    box-shadow: 0 5px 25px var(--card-shadow), 0 1px 3px rgba(0,0,0,0.05);
+    border-top: 4px solid transparent;
+  }
+  
+  /* Add active states for touch */
+  .timeline-content:active,
+  .video-blurb:active,
+  .video-btn:active {
+    transform: translateY(-2px);
+  }
+  
+  /* Increase tap targets for better mobile experience */
+  nav a,
+  .video-btn,
+  #controls-container button {
+    padding: 0.8rem;
   }
 }
