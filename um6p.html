@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UM6P - Agrivoltaics Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/main-styles.css">
+</head>
+<body class="who-we-are">
+  <script src="js/header.js"></script>
+
+  <main>
+    <h1>UM6P Agrivoltaics Timeline</h1>
+    <div class="timeline-container">
+      <div class="timeline">
+        <div class="timeline-item" style="--i:1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2022</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-lightbulb"></i>
+            <h3>Research on Luminescent Solar Concentrators</h3>
+            <p>
+              UM6P researchers proposed using luminescent solar concentrators (LSCs) in agrivoltaic installations to convert UV light to visible light for crop growth and generate electricity, enhancing system efficiency.
+            </p>
+            <a href="https://www.pv-magazine.com/2022/11/30/luminescent-solar-concentrators-for-applications-in-agrivoltaics-greenhouses/" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-handshake"></i>
+            <h3>Strengthening Partnership with Fauji Group</h3>
+            <p>
+              UM6P and OCP Group reinforced partnership with Pakistan's Fauji Group, with UM6P contributing agronomic expertise to promote innovative agricultural solutions, potentially including agrivoltaics.
+            </p>
+            <a href="https://www.ocpgroup.ma/press-release-article/ocp-group-mohammed-vi-polytechnic-university-and-fauji-group-announce" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-seedling"></i>
+            <h3>Establishment of Agrivoltaic Research Platform</h3>
+            <p>
+              UM6P created a replicated agrivoltaic platform at its Benguerir experimental farm to study energy and crop co-production in semi-arid conditions, focusing on scalability for Morocco and Sub-Saharan Africa.
+            </p>
+            <a href="https://www.fainstitute.arizona.edu/sites/default/files/documents/Agrivoltaics%20PROGRAM%20with%20PARTICIPANTS_April%202023_Final.pdf" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:4">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-users"></i>
+            <h3>Focus Group on Sustainable Agri-Food Policies</h3>
+            <p>
+              UM6P's College of Agriculture organized a focus group to identify policies for promoting WEFE Nexus opportunities in the Rhamna region, including hydroponics with photovoltaics.
+            </p>
+            <a href="https://www.um6p.ma/en/college-agriculture-held-discussion-sustainable-agri-food-policies-rhamna-region" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:5">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-eye"></i>
+            <h3>Wiser Cares Adaptive Agriculture Visit to UM6P</h3>
+            <p>
+              UM6P hosted Wiser Cares Adaptive Agriculture team, showcasing agrivoltaic work and emphasizing the dual benefits of agrivoltaic panels and the importance of water management in MENA region.
+            </p>
+            <a href="https://www.linkedin.com/posts/katherine-tafur-landazabal-9423601aa_wiser-activity-7190986491601276928-l5v6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAQT-FQB5NNqOxKXQgodQpO7gl77j7SJ-6g" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2024 International School of Agrivoltaics (ISAv) | UM6P</p>
+  </footer>
+
+  <script>
+    // Intersection Observer for timeline items (KEEP THIS - NOT MOVED TO HEADER.JS)
+    document.addEventListener('DOMContentLoaded', function() {
+      const observerOptions = {
+        threshold: 0.2
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all timeline content elements
+      document.querySelectorAll('.timeline-content').forEach(item => {
+        item.style.opacity = 0;
+        item.style.transform = 'translateY(20px)';
+        observer.observe(item);
+      });
+    });
+  </script>
+</body>
+</html>

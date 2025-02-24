@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>University of Arizona - Agrivoltaics Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/main-styles.css"> <!--  ✅ LINK TO EXTERNAL CSS FILE -->
+</head>
+<body class="who-we-are">
+  <script src="js/header.js"></script> <!-- ✅ INCLUDE HEADER FROM JAVASCRIPT -->
+
+  <main>
+    <h1>University of Arizona Agrivoltaics Timeline</h1>
+    <div class="timeline-container">
+      <div class="timeline">
+        <div class="timeline-item" style="--i:1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2017</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-seedling"></i>
+            <h3>Early Research and Development</h3>
+            <p>
+              UArizona researchers initiated agrivoltaic experiments at the Biosphere 2 facility. Led by Associate Professor Greg Barron-Gafford, the team cultivated crops beneath elevated solar panels, revealing increased fruit production and reduced water usage.
+            </p>
+            <a href="https://news.arizona.edu/news/ua-agrivoltaics-project-named-world-changing-ideas-finalist" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2018</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-award"></i>
+            <h3>Recognition and Awards</h3>
+            <p>
+              Fast Company magazine honored the project as a finalist in its World Changing Ideas Awards, underscoring its potential to revolutionize sustainable agriculture and energy practices.
+            </p>
+            <a href="https://sbs.arizona.edu/news/ua-agrivoltaics-project-named-2018-world-changing-idea" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2020</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-school"></i>
+            <h3>Expansion and Community Engagement</h3>
+            <p>
+              The initiative expanded to local schools in the Tucson Unified School District, integrating agrivoltaic systems into campuses and engaging K-12 students in STEM education.
+            </p>
+            <a href="https://news.arizona.edu/news/agrivoltaics-proves-mutually-beneficial-across-food-water-energy-nexus" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:4">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-dollar-sign"></i>
+            <h3>Advancements and Funding</h3>
+            <p>
+              UArizona's research received a $1.2 million grant from the U.S. Department of Energy to explore integrating crop cultivation and livestock grazing within solar farms.
+            </p>
+            <a href="https://news.arizona.edu/news/uarizona-researchers-awarded-12m-explore-farming-existing-solar-power-sites" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:5">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-building"></i>
+            <h3>Innovative Campus Implementations</h3>
+            <p>
+              The ENR2 building now features a rooftop agrivoltaic system combining solar panels with a green roof, studying the synergy between vegetation and PV panels.
+            </p>
+            <a href="https://sustainability.arizona.edu/projects/enr2-rooftop-photovoltaic-pv-project" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:6">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-globe"></i>
+            <h3>Global Recognition and Leadership</h3>
+            <p>
+              UArizona co-hosted the 5th World Conference on Agrivoltaics in June 2024 with NREL, gathering international experts to exchange innovative research and practices.
+            </p>
+            <a href="https://www.agrivoltaics-conference.org/history-and-past-conferences" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2024 International School of Agrivoltaics (ISAv) | University of Arizona</p>
+  </footer>
+
+  <script>
+    // Intersection Observer for timeline items (KEEP THIS - NOT MOVED TO HEADER.JS)
+    document.addEventListener('DOMContentLoaded', function() {
+      const observerOptions = {
+        threshold: 0.2
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all timeline content elements
+      document.querySelectorAll('.timeline-content').forEach(item => {
+        item.style.opacity = 0;
+        item.style.transform = 'translateY(20px)';
+        observer.observe(item);
+      });
+    });
+  </script>
+</body>
+</html>

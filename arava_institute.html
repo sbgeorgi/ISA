@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arava Institute - Agrivoltaics Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/main-styles.css"> <!-- Link to main-styles.css -->
+</head>
+<body class="who-we-are">
+  <script src="js/header.js"></script>
+
+  <main>
+    <h1>Arava Institute Agrivoltaics Timeline</h1>
+    <div class="timeline-container">
+      <div class="timeline">
+        <div class="timeline-item" style="--i:1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2021</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-flask"></i>
+            <h3>Early Initiatives and Research</h3>
+            <p>
+                The Arava Institute established an agrivoltaics research site in collaboration between the Center for Renewable Energy and Energy Conservation and the Center for Sustainable Agriculture. Research focuses on dual land use for agriculture and energy, crop yield enhancement, and water efficiency.
+            </p>
+            <a href="https://arava.org/wp-content/uploads/2023/03/Agrivoltaic-off-grid.pdf" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2022</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-bullhorn"></i>
+            <h3>Public Outreach and Knowledge Sharing</h3>
+            <p>
+                Dr. Tali Zohar from the Arava Institute conducted public outreach through presentations and webinars. These sessions aimed to share insights on the benefits and challenges of agrivoltaics and promote sustainable land-use practices among stakeholders.
+            </p>
+            <a href="https://www.facebook.com/friendsofarava/videos/agrivoltaics-harnessing-land-for-farming-and-renewable-energy-with-dr-tali-zohar/859628328251081/" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-users"></i>
+            <h3>Community Engagement and Education</h3>
+            <p>
+                Interns at the Arava Institute engaged in agrivoltaics research, focusing on community-based microgrids, flywheel storage, and desalination for off-grid areas. These projects highlight practical agrivoltaic applications for energy and water solutions.
+            </p>
+            <a href="https://arava.org/interns-engaged-in-critical-research-at-the-institute/" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="--i:4">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <i class="timeline-icon fas fa-robot"></i>
+            <h3>Technological Advancements - SPARC</h3>
+            <p>
+                Development of the Solar-Powered Agri Robotic Classroom (SPARC), an autonomous agricultural robot for seeding, watering, harvesting, and crop monitoring under solar panels. SPARC enhances farming efficiency and serves as an educational tool for sustainable agriculture.
+            </p>
+            <a href="https://www.instagram.com/aravainstitute/p/C2OnCPxo1bR/" target="_blank">Read more <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2024 International School of Agrivoltaics (ISAv) | Arava Institute</p>
+  </footer>
+
+  <script>
+    // Intersection Observer for timeline items (KEEP THIS - NOT MOVED TO HEADER.JS)
+    document.addEventListener('DOMContentLoaded', function() {
+      const observerOptions = {
+        threshold: 0.2
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all timeline content elements
+      document.querySelectorAll('.timeline-content').forEach(item => {
+        item.style.opacity = 0;
+        item.style.transform = 'translateY(20px)';
+        observer.observe(item);
+      });
+    });
+  </script>
+</body>
+</html>
