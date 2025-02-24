@@ -5,23 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Agrivoltaics Projects</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/main-styles.css"> <!-- ✅ Link to main-styles.css -->
+  <link rel="stylesheet" href="css/main-styles.css">
 </head>
 <body>
-  <script src="js/header.js"></script> <!-- ✅ Include header.js -->
+  <script src="js/header.js"></script>
 
-  <!-- (Rest of your homepage content remains as before) -->
   <section class="video-background">
-    <video autoplay loop id="background-video">
+    <video autoplay loop id="background-video" muted> <!-- ✅ Added muted attribute for initial mute -->
       <source src="videos/UA_Agrivoltaics_1.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
+    <div id="controls-container">
+      <button id="pause-btn" aria-label="Pause">
+        <i class="fas fa-pause"></i> <!-- Pause icon initially -->
+      </button>
+      <button id="mute-btn" aria-label="Unmute">
+        <i class="fas fa-volume-mute"></i> <!-- Mute icon initially -->
+      </button>
+    </div>
   </section>
-
-  <div id="controls-container">
-    <button id="pause-btn">Pause</button>
-    <button id="mute-btn">Mute</button>
-  </div>
 
   <section class="overlay-buttons">
     <div class="button-container">

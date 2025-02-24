@@ -2,12 +2,14 @@
 const video = document.getElementById('background-video');
 const pauseButton = document.getElementById('pause-btn');
 const muteButton = document.getElementById('mute-btn');
+const pauseIcon = pauseButton.querySelector('i');
+const muteIcon = muteButton.querySelector('i');
 
 // Autoplay on page load
 window.addEventListener('DOMContentLoaded', (event) => {
-  video.muted = true; // Mute the video to allow autoplay in some browsers
+  // video.muted = true; // Muting is now done in HTML with 'muted' attribute for better initial behavior. Keep this for redundancy if needed.
   video.play();
-  
+
   const firstButton = document.querySelector('.video-btn.active');
   if (firstButton) {
     const initialVideo = firstButton.getAttribute('data-video');
@@ -21,20 +23,28 @@ window.addEventListener('DOMContentLoaded', (event) => {
 pauseButton.addEventListener('click', function() {
   if (video.paused) {
     video.play();
-    pauseButton.textContent = 'Pause';
+    pauseIcon.classList.remove('fa-play');
+    pauseIcon.classList.add('fa-pause');
+    pauseButton.setAttribute('aria-label', 'Pause'); // Accessibility update
   } else {
     video.pause();
-    pauseButton.textContent = 'Play';
+    pauseIcon.classList.remove('fa-pause');
+    pauseIcon.classList.add('fa-play');
+    pauseButton.setAttribute('aria-label', 'Play'); // Accessibility update
   }
 });
 
 muteButton.addEventListener('click', function() {
   if (video.muted) {
     video.muted = false;
-    muteButton.textContent = 'Mute';
+    muteIcon.classList.remove('fa-volume-mute');
+    muteIcon.classList.add('fa-volume-up');
+    muteButton.setAttribute('aria-label', 'Mute'); // Accessibility update
   } else {
     video.muted = true;
-    muteButton.textContent = 'Unmute';
+    muteIcon.classList.remove('fa-volume-up');
+    muteIcon.classList.add('fa-volume-mute');
+    muteButton.setAttribute('aria-label', 'Unmute'); // Accessibility update
   }
 });
 
@@ -44,7 +54,7 @@ videoButtons.forEach(button => {
   button.addEventListener('click', function() {
     const newVideo = button.getAttribute('data-video');
     const newImage = button.getAttribute('data-image');
-    
+
     if (newVideo) {
       video.style.display = 'block'; // Ensure video is shown
       video.src = newVideo;
