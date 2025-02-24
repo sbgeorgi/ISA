@@ -33,7 +33,7 @@ body {
   color: var(--text);
   line-height: 1.7;
   overflow-x: hidden;
-  font-size: 16px;
+  font-size: 16px; /* Base font size */
 }
 
 /* Enhanced Header styles */
@@ -487,6 +487,11 @@ footer::before {
     left: -9px;
     right: auto;
   }
+
+  /* Adjust video blurb width for tablets */
+  .video-blurb {
+    width: calc(50% - 20px); /* Two blurbs side by side */
+  }
 }
 
 @media (max-width: 768px) {
@@ -564,50 +569,154 @@ footer::before {
   .header-text {
     font-size: 1rem;
   }
+
+  main {
+    padding-top: 100px; /* Adjust main padding for mobile header */
+    padding-bottom: 60px; /* Adjust main padding for mobile footer or content spacing */
+  }
+
+  /* Center align timeline year on smaller screens for better readability */
+  .timeline-year {
+    transform: translateX(-50%); /* Ensure year stays centered on mobile */
+  }
+
+  /* Stack video blurbs on smaller screens */
+  .video-blurb {
+    width: 100%;
+    max-width: 450px; /* Limit max width for stacked blurbs if needed */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px; /* Add spacing between stacked blurbs */
+  }
+
+  #controls-container {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .overlay-buttons {
+    bottom: 30px;
+  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) { /* Extra small devices (phones, less than 576px) */
+    body {
+        font-size: 15px; /* Further reduce base font size for very small screens */
+    }
+
+    h1 {
+        font-size: 2rem; /* Further reduce h1 size for very small screens */
+        margin-bottom: 2rem;
+    }
+
+    .header-text {
+        font-size: 0.9rem;
+        display: none; /* Optionally hide header text on very small screens */
+    }
+
+    .logo-link img {
+        height: 35px; /* Slightly smaller logo for very small screens */
+    }
+
+    header {
+        padding: 0.8rem 1.5rem; /* Reduce header padding on very small screens */
+    }
+
+    nav a {
+        font-size: 1rem; /* Adjust nav link font size for very small screens */
+        padding: 0.5rem;
+    }
+
+    main {
+        padding-top: 90px; /* Further adjust main padding if header is smaller */
+        padding-bottom: 40px; /* Adjust bottom padding for very small screens */
+        padding-left: 15px; /* Reduce side padding for very small screens */
+        padding-right: 15px;
+    }
+
+    .timeline::before {
+        left: 20px; /* Adjust timeline line position for smaller screens */
+    }
+
+    .timeline-item {
+        padding-left: 50px; /* Adjust timeline item padding for smaller screens */
+        padding-right: 10px; /* Reduce right padding for timeline items */
+    }
+
+    .timeline-dot {
+        left: 20px; /* Adjust timeline dot position for smaller screens */
+        width: 18px; /* Smaller timeline dot */
+        height: 18px;
+        top: 2rem; /* Adjust dot top position if needed */
+    }
+
+    .timeline-year {
+        left: 20px; /* Adjust timeline year position for smaller screens */
+        font-size: 0.75rem; /* Smaller year font size */
+        top: 1.8rem; /* Adjust year top position if needed */
+        padding: 0.2rem 0.7rem; /* Reduce year padding */
+    }
+
+    .timeline-content {
+        padding: 1.2rem; /* Reduce content padding for smaller screens */
+    }
+
+    .timeline-content h3 {
+        font-size: 1.3rem; /* Slightly smaller content heading */
+        margin-bottom: 1rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.9rem; /* Slightly smaller content paragraph text */
+        margin-bottom: 1rem;
+    }
+
+    .timeline-icon {
+        font-size: 1.3rem; /* Slightly smaller timeline icon */
+        top: 1rem; /* Adjust icon top position if needed */
+        right: 1rem; /* Adjust icon right position if needed */
+    }
+
+    footer {
+        padding: 1.5rem; /* Reduce footer padding on very small screens */
+    }
+
+    #controls-container {
+        bottom: 10px;
+        right: 10px;
+        gap: 5px; /* Reduce gap between controls */
+    }
+
+    #controls-container button {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+        width: 35px;
+        height: 35px;
+    }
+
+    .overlay-buttons {
+        bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) { /* Even smaller devices (phones) - further adjustments if needed */
   .timeline::before {
-    left: 20px;
+    left: 15px; /* Further adjust timeline line position for very small screens */
   }
 
   .timeline-item {
-    padding-left: 50px;
+    padding-left: 40px; /* Further adjust timeline item padding for very small screens */
   }
 
   .timeline-dot {
-    left: 20px;
-    width: 18px;
-    height: 18px;
+    left: 15px; /* Further adjust timeline dot position for very small screens */
   }
 
   .timeline-year {
-    left: 20px;
-    font-size: 0.7rem;
-  }
-
-  .timeline-content {
-    padding: 1.2rem;
-  }
-
-  .timeline-content h3 {
-    font-size: 1.3rem;
-  }
-
-  h1 {
-    font-size: 1.9rem;
-    margin-bottom: 2rem;
-  }
-
-  .logo-link img {
-    height: 30px;
-  }
-
-  .header-text {
-    font-size: 0.9rem;
-    display: none;
+    left: 15px; /* Further adjust timeline year position for very small screens */
   }
 }
+
 
 /* Video Background Styles for index.html - Enhanced */
 .video-background {
@@ -826,12 +935,12 @@ a {
     max-width: 450px;
     margin: 0 auto;
   }
-  
+
   #controls-container {
     bottom: 15px;
     right: 15px;
   }
-  
+
   .overlay-buttons {
     bottom: 30px;
   }
