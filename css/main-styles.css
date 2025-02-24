@@ -569,7 +569,7 @@ footer {
     /* Map styles for map_of_stakeholders.html */
     #map {
       width: 100%; /* Ensure map takes full width of its container */
-      height: 670px; /* Keep the height as before or adjust as needed */
+      height: 500px; /* Keep the height as before or adjust as needed */
     }
 
     /* Ensure html and body take full viewport width and height */
