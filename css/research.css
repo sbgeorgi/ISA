@@ -1,0 +1,330 @@
+/* 
+  Updated Research Page CSS 
+  --------------------------
+  All research‑page styles are now scoped to the main content so that global elements—like the header—remain styled by main‑styles.css.
+  The color variables have been updated to match the main color palette.
+*/
+
+/* === RESEARCH PAGE VARIABLES (Scoped) === */
+body.agrivoltaics-research-page main {
+    --primary: #0C234B;
+    --primary-light: #1a3a6c;
+    --primary-dark: #071832;
+    --secondary: #AB0520;
+    --secondary-light: #d50628;
+    --secondary-dark: #8a041a;
+    --text-dark: #333333;
+    --text-light: #6c757d;
+    --background: #f8f9fa;
+    --white: #ffffff;
+    --shadow: 0 15px 40px rgba(12, 35, 75, 0.12);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --animation-duration: 0.8s;
+  }
+  
+  /* === GENERAL STYLES (Scoped to main) === */
+  body.agrivoltaics-research-page main {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background);
+    overflow-x: hidden;
+  }
+  
+  /* === TYPOGRAPHY === */
+  body.agrivoltaics-research-page main h1,
+  body.agrivoltaics-research-page main h2,
+  body.agrivoltaics-research-page main h3 {
+    color: var(--primary-dark);
+  }
+  
+  body.agrivoltaics-research-page main h1 {
+    font-size: 3rem;
+  }
+  
+  body.agrivoltaics-research-page main h2 {
+    font-size: 2.2rem;
+    position: relative;
+    padding-bottom: 0.4rem;
+  }
+  
+  body.agrivoltaics-research-page main h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--secondary);
+    border-radius: 2px;
+  }
+  
+  body.agrivoltaics-research-page main p {
+    margin-bottom: 1rem;
+  }
+  
+  /* === BUTTONS === */
+  body.agrivoltaics-research-page main .btn {
+    background: var(--primary);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
+  
+  body.agrivoltaics-research-page main .btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+  }
+  
+  /* === HERO SECTION === */
+  body.agrivoltaics-research-page main .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(
+        to bottom,
+        rgba(12, 35, 75, 0.7),
+        rgba(7, 24, 50, 0.9)
+      ),
+      url('/api/placeholder/1200/800');
+    background-size: cover;
+    color: var(--white);
+    position: relative;
+  }
+  
+  body.agrivoltaics-research-page main .hero-content {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+  
+  body.agrivoltaics-research-page main .hero-content p {
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  /* Scroll Indicator */
+  body.agrivoltaics-research-page main .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+  }
+  
+  /* === SECTION STYLES === */
+  body.agrivoltaics-research-page main .section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  /* Reveal section when in view */
+  body.agrivoltaics-research-page main .section.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Staggered fade/slide for section content */
+  body.agrivoltaics-research-page main .section-content h2,
+  body.agrivoltaics-research-page main .section-content p,
+  body.agrivoltaics-research-page main .section-content ul {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--animation-duration) ease-out,
+      transform var(--animation-duration) ease-out;
+  }
+  
+  body.agrivoltaics-research-page main .section.active .section-content h2,
+  body.agrivoltaics-research-page main .section.active .section-content p,
+  body.agrivoltaics-research-page main .section.active .section-content ul {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Enhanced zoom effect for images */
+  body.agrivoltaics-research-page main .section-image {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  
+  body.agrivoltaics-research-page main .section.active .section-image {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  body.agrivoltaics-research-page main .section-image:hover {
+    transform: scale(1.05);
+  }
+  
+  body.agrivoltaics-research-page main .section-image img {
+    width: 100%;
+    display: block;
+  }
+  
+  /* Container for section content and image */
+  body.agrivoltaics-research-page main .section-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+  }
+  
+  body.agrivoltaics-research-page main .section-content,
+  body.agrivoltaics-research-page main .section-image {
+    flex: 1;
+  }
+  
+  /* === PARALLAX BACKGROUND === */
+  body.agrivoltaics-research-page main .parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/api/placeholder/1920/1080');
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.15;
+    z-index: -2;
+  }
+  
+  /* === INTERACTIVE LIST ITEMS === */
+  body.agrivoltaics-research-page main .section-content ul li {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  body.agrivoltaics-research-page main .section.active .section-content ul li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* === CTA SECTION === */
+  body.agrivoltaics-research-page main .cta {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    padding: 4rem;
+    text-align: center;
+  }
+  
+  body.agrivoltaics-research-page main .cta-container h2::after {
+    background: var(--white);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* === ANIMATIONS === */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  /* === SECTION DECORATIVE BACKGROUND === */
+  body.agrivoltaics-research-page main .section::before {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: var(--secondary);
+    opacity: 0.08;
+    z-index: -1;
+    top: -50px;
+    right: -50px;
+  }
+  
+  body.agrivoltaics-research-page main .section:nth-child(even)::before {
+    top: auto;
+    bottom: -50px;
+    left: -50px;
+    right: auto;
+  }
+  
+  /* === RESPONSIVE === */
+  @media (max-width: 992px) {
+    body.agrivoltaics-research-page main .section-container {
+      flex-direction: column;
+    }
+  
+    body.agrivoltaics-research-page main h1 {
+      font-size: 2.8rem;
+    }
+  
+    body.agrivoltaics-research-page main h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    body.agrivoltaics-research-page main .hero-content h1 {
+      font-size: 2.2rem;
+    }
+  
+    body.agrivoltaics-research-page main .section {
+      padding: 60px 0;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    body.agrivoltaics-research-page main .btn {
+      padding: 0.6rem 1.5rem;
+    }
+  
+    body.agrivoltaics-research-page main .section {
+      padding: 60px 20px;
+    }
+  }
+  
+  /* === CITATION BADGES === */
+  body.agrivoltaics-research-page main .citation-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    color: var(--white);
+    font-size: 0.75rem;
+    transition: var(--transition);
+  }
+  
+  body.agrivoltaics-research-page main .citation-badge:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.1);
+  }
+  
